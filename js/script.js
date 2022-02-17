@@ -66,12 +66,57 @@ h2Element2.forEach((e) => {
 })
  */
 
-// seçmiş olduğum tarihin onchange event'ine bir fonk. tanımlayacaz ve sürekli çalışmasını sağlayacaz.
+// seçmiş olduğum tarihin onchange event'ine bir fonk. tanımlayacaz ve sürekli çalışmasını sağlayacaz.event.target:Olayı tetikleyen öğe döndürür.count ta eleman saydırmada [] gibi burada da bir tane boş birthday tanımlamalıyım.
+let selectedBirthday ;
 let birthdayInput = document.querySelector("[name = birthday]") ;
-birthdayInput.addEventListener("change" , (event) => {
-    console.log(event.target);
+birthdayInput.addEventListener("change" , (e) => {
+    // console.log(typeof e.target.value);    dateString
+    selectedBirthday = new Date (e.target.value) ; // burada date object formatına çevirdim.kıyaslama yapabilirim.
 
+    //e.target == birthdayInput
+    
+    // kullanıcı bugünden büyük doğum tarihi giremez.
+    if (selectedBirthday > new Date()) {
+        alert("Doğum tarihiniz bugünden büyük olamaz.") ;
+        return;              // bir daha girememesi için buradan çıkmamı sağlamalıyım.
+        
+    }
+    document.body.style.backgroundImage = "url(./image/m.jfif)" // yıl seçtiği aman arka plan rengimi değiştirdim.
+
+    // setInterval(updateCountdown, 1000);  // buraya yazmamızın sebebi fonk.içinde yani change eventi gerçekleştiği zaman çalışmasını istiyorum.
 })
+
+
+
+
+// hesaplama işlemlerime geçiyorum .bugünün tarihinden doğum tarihimi çıkaracam. seçeceğim doğum yılımın yıl,ay, gün,saat,dakika,saniye sini güncelleyerek tanımlamam gerekir. ve saniye min her zaman ilerlemesini sağlamalıyım.
+const updateContainer = () => {
+    let updateYear = selectedBirthday.getFullYear() ;  // seçtiğim yılı bana verir.
+    let updateMonth = selectedBirthday.getMonth() ;  // seçtiğim ay
+    let updateDay = selectedBirthday.getDate() ; // seçtiğim gün , getDay haftalık alır.getDate aylık alır.
+    let updateHour =selectedBirthday.getHours() ;   // seçtiğim saat
+    let updateMinute =selectedBirthday.getMinutes() ; // seçtiğim dakika
+    let updateSecond =selectedBirthday.getSeconds() ; // seçtiğim saniye
+
+    
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

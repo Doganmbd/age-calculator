@@ -71,7 +71,7 @@ let selectedBirthday ;
 let birthdayInput = document.querySelector("[name = birthday]") ;
 birthdayInput.addEventListener("change" , (e) => {
     // console.log(typeof e.target.value);    dateString
-    selectedBirthday = new Date (e.target.value) ; // burada date object formatına çevirdim.kıyaslama yapabilirim.
+    selectedBirthday = new Date(e.target.value) ; // burada date object formatına çevirdim.kıyaslama yapabilirim.
 
     //e.target == birthdayInput
     
@@ -83,8 +83,8 @@ birthdayInput.addEventListener("change" , (e) => {
     }
     document.body.style.backgroundImage = "url(./image/m.jfif)" // yıl seçtiği aman arka plan rengimi değiştirdim.
 
-    // setInterval(updateCountdown, 1000);  // buraya yazmamızın sebebi fonk.içinde yani change eventi gerçekleştiği zaman çalışmasını istiyorum.
-})
+    setInterval(updateContainer, 1000);  // buraya yazmamızın sebebi fonk.içinde yani change eventi gerçekleştiği zaman çalışmasını istiyorum.
+}) ;
 
 
 
@@ -98,7 +98,61 @@ const updateContainer = () => {
     let updateMinute =selectedBirthday.getMinutes() ; // seçtiğim dakika
     let updateSecond =selectedBirthday.getSeconds() ; // seçtiğim saniye
 
-    
+    // yukarıdakinin aynısını bugünde de almam lazım
+    let now = new Date();
+
+    let currentYear = now.getFullYear() ;
+    let currentMonth = now.getMonth() ;
+    let currentDay = now.getDate() ;
+    let currentHour = now.getHours() ;
+    let currentMinute= now.getMinutes() ;
+    let currentSecond= now.getSeconds() ;
+
+    // seçtiğim tarih sayı olarak rakamları doğum tarihimden büyükse sıkıntı olmaz.
+    let yearOfAge = currentYear - updateYear ;
+    let monthOfAge = currentMonth - updateMonth;
+    let dayOfAge = currentDay - updateDay;
+    let hourOfAge = currentHour - updateHour;
+    let minuteOfAge = currentMinute - updateMinute;
+    let secondOfAge = currentSecond - updateSecond;
+
+    // Ama küçükse ; işlem yapmam gerek şu an ki ay doğduğum aydan küçükse eksi çıkarır. bunu önlemek için ; saniyeden yıla doğru ilerlemeliyiz.
+    if (secondOfAge < 0 ) {
+        secondOfAge += 60 ;
+        minuteOfAge-- ;        
+    }
+
+    if (minuteOfAge < 0 ) {
+        minuteOfAge += 60 ;
+        hourOfAge-- ;
+    }
+
+    if (hourOfAge < 0 ) {
+        hourOfAge += 24 ;
+        dayOfAge-- ;
+    }
+
+    if (dayOfAge < 0) {
+        dayOfAge += 30 ;
+        monthOfAge-- ;
+    }
+
+    if (montOfAGe < 0 ) {
+        monthOfAge += 12 ;
+        yearOfAge-- ;        
+    }
+
+
+    // şimdi update fonk. güncellemeliyim. yani mesela 9 değil 09 yazdırmalıyım.
+    //padstart = ilk parametre uzunluğu alır eğer seçtiğim uzunlukta değilse soluna ekleyeceğim şey ikinci parametrede yer alır.padstart(2,"0") gibi.
+    years.innerHTML = yearOfAge.toString().padStart(2,"0") ;
+    months.innerHTML = monthOfAge.toString().padStart(2, "0");
+    days.innerHTML = dayOfAge.toString().padStart(2, "0");
+    hours.innerHTML = hourOfAge.toString().padStart(2, "0");
+    minutes.innerHTML = minuteOfAge.toString().padStart(2, "0");
+    seconds.innerHTML = secondOfAge.toString().padStart(2, "0");
+
+
 
 
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./css/daterangepicker.css" rel="stylesheet" />
+</head>
+<body>
+    <h1 class="parag" >Exact Age Calculator</h1>
+    <div id="container" class="container">
+
+<!--         <img class="image2" src="./image/m.jfif" alt=""> -->
+
+        <div class="time">
+            <h2 id="years"></h2>
+            <p>YEARS</p>
+        </div>
+
+        <div class="time">
+            <h2 id="months"></h2>
+            <p>MONTHS</p>
+        </div>
+
+        <div class="time">
+            <h2 id="days"></h2>
+            <p>DAYS</p>
+        </div>
+
+        <div class="time">
+            <h2 id="hours"></h2>
+            <p>HOURS</p>
+        </div>
+
+        <div class="time">
+            <h2 id="minutes"></h2>
+            <p>MINUTES</p>
+        </div>
+
+        <div class="time">
+            <h2 id="seconds"></h2>
+            <p>SECONDS</p>
+        </div>
+
+    </div>
+
+    <div class="time">
+        <label class="label">Select Your Birthday</label>
+        <div class="input-group-icon">
+          <input  type="datetime-local" name="birthday">
+        </div>
+    </div>
+
+    <div id="year" class="year"></div>
+    <img src="./image/spinner.gif" alt="Loading..." id="loading" class="loading" style="display: none;" />
+  
+    <script src="./js/script.js"></script>
+</body>
+</html>

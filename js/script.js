@@ -100,7 +100,7 @@ const updateContainer = () => {
 
     // yukarıdakinin aynısını bugünde de almam lazım
     let now = new Date();
-
+    
     let currentYear = now.getFullYear() ;
     let currentMonth = now.getMonth() ;
     let currentDay = now.getDate() ;
@@ -137,7 +137,7 @@ const updateContainer = () => {
         monthOfAge-- ;
     }
 
-    if (montOfAGe < 0 ) {
+    if (monthOfAge < 0 ) {
         monthOfAge += 12 ;
         yearOfAge-- ;        
     }
